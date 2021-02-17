@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     axios.request(options).then((response) => {
-      console.log(response.data);
+      console.log(JSON.parse(response.data.substring(5, response.data.length - 1)));
     }).catch((error) => {
       console.error(error);
     });
