@@ -10,13 +10,13 @@ function App() {
   const inputRef = useRef(null);  
 
   const fetchWeatherInfo = (e) => {
-    e && e.preventDefault();
-    
+    e?.preventDefault();
+
     const options = {
       method: 'GET',
       url: 'https://community-open-weather-map.p.rapidapi.com/weather',
       params: {
-        q: inputRef.current.value,
+        q: inputRef.current.value || "London, uk",
         units: 'metric',
       },
       headers: {
@@ -28,13 +28,13 @@ function App() {
       console.log("FECHED INFO")
       setWeatherInfo(response.data);      
     }).catch((error) => {
-      console.error(error);
+      alert(error.message);
     });    
-  }
+  };
 
   useEffect(() => {
     fetchWeatherInfo();
-  }, [])
+  }, []);
 
   console.log(weatherInfo);
 
@@ -46,6 +46,7 @@ function App() {
         <button type="submit" onClick={fetchWeatherInfo}>Search</button>
       </form>
       <h2>{weatherInfo?.name}</h2>
+      <h3>{weatherInfo && `sunrise: ${new Date(parseInt(weatherInfo?.sys?.sunrise * 1000)).toLocaleString()}`}</h3>
     </div>
   );
 }
