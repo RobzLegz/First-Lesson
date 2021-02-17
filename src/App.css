@@ -12,6 +12,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  color: #fffafa;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
 }
 
 .infoContainer {
@@ -28,10 +30,31 @@
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+.infoContainer > h1 {
+  margin-bottom: 50px;
+  font-size: 3rem;
+}
 .infoContainer > form > input {
   height: 40px;
   width: 300px;
   padding: 0 10px;
   outline: none;
   font-size: 1rem;
+}
+.infoContainer > form > button {
+  width: 80px;
+  height: 45px;
+  cursor: pointer;
+  background: #000;
+  color: #fff;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.infoContainer > form {
+  margin-bottom: 30px;
+}
+.infoContainer > h2 {
+  font-size: 1.7rem;
 }

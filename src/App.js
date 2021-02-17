@@ -48,9 +48,9 @@ function App() {
         </form>
         <h2>{weatherInfo?.name}</h2>
         <h2>{weatherInfo?.main.temp}°C</h2>
+        <h2>{weatherInfo?.weather[0]?.description}</h2>
         <h3>{weatherInfo && `sunrise: ${new Date(parseInt(weatherInfo?.sys?.sunrise * 1000)).toLocaleString()}`}</h3>
       </div>
-      
     </div>
   );
 }
