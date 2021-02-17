@@ -39,14 +39,18 @@ function App() {
   console.log(weatherInfo);
 
   return (
-    <div className="App">
-      <h1>Hello</h1>
-      <form>
-        <input ref={inputRef} type="text" placeholder="Type the name of the city" />
-        <button type="submit" onClick={fetchWeatherInfo}>Search</button>
-      </form>
-      <h2>{weatherInfo?.name}</h2>
-      <h3>{weatherInfo && `sunrise: ${new Date(parseInt(weatherInfo?.sys?.sunrise * 1000)).toLocaleString()}`}</h3>
+    <div className="app">
+      <div className="infoContainer">
+        <h1>Weather App</h1>
+        <form>
+          <input ref={inputRef} type="text" placeholder="Type the name of the city" />
+          <button type="submit" onClick={fetchWeatherInfo}>Search</button>
+        </form>
+        <h2>{weatherInfo?.name}</h2>
+        <h2>{weatherInfo?.main.temp}°C</h2>
+        <h3>{weatherInfo && `sunrise: ${new Date(parseInt(weatherInfo?.sys?.sunrise * 1000)).toLocaleString()}`}</h3>
+      </div>
+      
     </div>
   );
 }
