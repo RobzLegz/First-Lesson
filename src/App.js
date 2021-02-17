@@ -1,56 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import './App.css';
 
+const options = {
+  method: 'GET',
+  url: 'https://community-open-weather-map.p.rapidapi.com/weather',
+  params: {
+    q: 'London,uk',
+    lat: '0',
+    lon: '0',
+    callback: 'test',
+    id: '2172797',
+    lang: 'null',
+    units: '"metric" or "imperial"',
+    mode: 'xml, html'
+  },
+  headers: {
+    'x-rapidapi-key': '14e74a0348msh51303d8b22d40ddp1d4fb4jsnebe22e91fcf0',
+    'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com'
+  }
+};
+
 function App() {
+
+  useEffect(() => {
+    axios.request(options).then((response) => {
+      console.log(response.data);
+    }).catch((error) => {
+      console.error(error);
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <h1>Hello</h1>
     </div>
   );
 }
